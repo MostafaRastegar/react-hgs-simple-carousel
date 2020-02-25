@@ -1,25 +1,32 @@
-import React, { useEffect } from 'react';
-import { Slider } from 'es6-simple-carousel';
-import 'es6-simple-carousel/dist/styles/slider.css';
+import React, { useEffect, useRef } from "react";
+import PropTypes from "prop-types";
+import { Slider } from "es6-simple-carousel";
+import "es6-simple-carousel/dist/styles/slider.css";
 
 function SimpleCarousel(props) {
-  const { className, children,slideConfig,refrence } = props;
+  const { className, children, slideConfig } = props;
+  const refrence = useRef();
   useEffect(() => {
     new Slider({
-        slider:refrence.current,
-        ...slideConfig
-      }
-    );
-  }, [className, refrence, slideConfig,children]);
+      slider: refrence.current,
+      ...slideConfig
+    });
+  }, []);
 
   return (
-    <div className={`slider${!!className ? ` ${className}` : ''}`} ref={refrence}>
-      <div className="wrapper">
-        <div className="slides">
-          {children}
+      <div className={`slider ${className}`} ref={refrence}>
+        <div className="wrapper">
+          <div className="slides">{children}</div>
         </div>
       </div>
-    </div>
   );
 }
+SimpleCarousel.propTypes = {
+  className: PropTypes.string,
+  children: PropTypes.node.isRequired,
+  slideConfig: PropTypes.object.isRequired
+};
+SimpleCarousel.defaultProps = {
+  className: ""
+};
 export default SimpleCarousel;
