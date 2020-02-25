@@ -1,13 +1,25 @@
 import React, { useEffect } from 'react';
-import {Slider} from '../../es6-simple-carousel/dist/index.es';
-import '../../es6-simple-carousel/src/styles/custom.css';
-import '../../es6-simple-carousel/src/styles/slider.css';
+import { Slider } from 'es6-simple-carousel';
+import 'es6-simple-carousel/dist/styles/slider.css';
 
-function Slider(props) {
-  const {slideConfig} = props;  
+function SimpleCarousel(props) {
+  const { className, children,slideConfig,refrence } = props;
   useEffect(() => {
-    new Slider(slideConfig);
-  }, [slideConfig]);
-}
+    new Slider({
+        slider:refrence.current,
+        ...slideConfig
+      }
+    );
+  }, [className, refrence, slideConfig,children]);
 
-export default Slider;
+  return (
+    <div className={`slider${!!className ? ` ${className}` : ''}`} ref={refrence}>
+      <div className="wrapper">
+        <div className="slides">
+          {children}
+        </div>
+      </div>
+    </div>
+  );
+}
+export default SimpleCarousel;

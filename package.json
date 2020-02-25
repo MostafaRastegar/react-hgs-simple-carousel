@@ -1,7 +1,7 @@
 {
-  "name": "react-hgs-owl-carousel",
-  "version": "1.0.1",
-  "description": "react owl-carousel new version",
+  "name": "react-hgs-simple-carousel",
+  "version": "0.1.0",
+  "description": "Simple and light Carousel",
   "main": "index.js",
   "scripts": {
     "build": "./node_modules/.bin/babel src --out-file index.js",
@@ -9,20 +9,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MostafaRastegar/react-hgs-owl-carousel.git"
+    "url": "git+https://github.com/MostafaRastegar/react-hgs-simple-carousel.git"
   },
   "keywords": [
     "react",
-    "owl",
-    "owlCarousel",
-    "owl-carousel"
+    "es6",
+    "simple-carousel",
+    "carousel"
   ],
   "author": "Mostafa Rastegar",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/MostafaRastegar/react-hgs-owl-carousel/issues"
+    "url": "https://github.com/MostafaRastegar/react-hgs-simple-carousel/issues"
   },
-  "homepage": "https://github.com/MostafaRastegar/react-hgs-owl-carousel#readme",
+  "homepage": "https://github.com/MostafaRastegar/react-hgs-simple-carousel#readme",
   "devDependencies": {
     "@babel/cli": "^7.7.7",
     "@babel/core": "^7.7.7",
@@ -30,6 +30,6 @@
     "@babel/preset-react": "^7.7.4"
   },
   "dependencies": {
-    "owl.carousel": "^2.3.4"
+    "es6-simple-carousel": "^1.0.3"
   }
 }
