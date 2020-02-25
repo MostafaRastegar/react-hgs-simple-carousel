@@ -30,6 +30,7 @@
     "@babel/preset-react": "^7.7.4"
   },
   "dependencies": {
-    "es6-simple-carousel": "^1.0.3"
+    "es6-simple-carousel": "^1.0.3",
+    "prop-types": "^15.7.2"
   }
 }

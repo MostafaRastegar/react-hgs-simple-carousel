@@ -14,14 +14,13 @@ import SimpleCarousel from 'react-hgs-simple-carousel';
 import 'es6-simple-carousel/dist/styles/custom.css',
 //...
 ```
-### 2. call a refrence and config for your carousel
+### 2. make config for your carousel
 ```jsx
 // ...
-import React, {useRef} from 'react';
+import React from 'react';
 
 //...
 // on main function
-const myCarousel = useRef(null);
 const slideConfig = {
   threshold: 50,
   infinite: true,
@@ -42,10 +41,10 @@ const slideConfig = {
 };
 // ....
 ```
-### 3. use refrence and config on your component's body
+### 3. use config on your component's body
 ```jsx
   <div class="container">
-      <SimpleCarousel className="myCarousel" slideConfig={slideConfig} refrence={myCarousel} >
+      <SimpleCarousel className="myCarousel" slideConfig={slideConfig}>
           <span className="slide">Slide 1</span>
           <span className="slide">Slide 2</span>
           <span className="slide">Slide 3</span>
@@ -62,12 +61,11 @@ const slideConfig = {
 for EX:
 
 ```jsx
-import React, {useRef } from 'react';
+import React from 'react';
 import SimpleCarousel from './components/slider';
 import 'es6-simple-carousel/dist/styles/custom.css';
 
 function App() {
-  const myCarousel = useRef(null);
   const slideConfig = {
     threshold: 50,
     infinite: true,
@@ -89,7 +87,7 @@ function App() {
 
   return (
     <div className="container">
-      <SimpleCarousel className="myCarousel" slideConfig={slideConfig} refrence={myCarousel} >
+      <SimpleCarousel className="myCarousel" slideConfig={slideConfig} >
           <span className="slide">Slide 1</span>
           <span className="slide">Slide 2</span>
           <span className="slide">Slide 3</span>
