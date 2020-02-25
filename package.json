@@ -1,0 +1,35 @@
+{
+  "name": "react-hgs-simple-carousel",
+  "version": "0.1.0",
+  "description": "Simple and light Carousel",
+  "main": "index.js",
+  "scripts": {
+    "build": "./node_modules/.bin/babel src --out-file index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MostafaRastegar/react-hgs-simple-carousel.git"
+  },
+  "keywords": [
+    "react",
+    "es6",
+    "simple-carousel",
+    "carousel"
+  ],
+  "author": "Mostafa Rastegar",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MostafaRastegar/react-hgs-simple-carousel/issues"
+  },
+  "homepage": "https://github.com/MostafaRastegar/react-hgs-simple-carousel#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.7.7",
+    "@babel/core": "^7.7.7",
+    "@babel/preset-env": "^7.7.7",
+    "@babel/preset-react": "^7.7.4"
+  },
+  "dependencies": {
+    "es6-simple-carousel": "^1.0.3"
+  }
+}
