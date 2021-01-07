@@ -1,105 +1,129 @@
-# react-hgs-simple-carousel
-A light and simple react carousel.(power by es6-simple-carousel)
-
-### 1. Getting Started
-* add SimpleCarousel from react-hgs-simple-carousel on your component.
-
-
-
-```jsx
-// ...
-import SimpleCarousel from 'react-hgs-simple-carousel';
-
-// optional
-import 'es6-simple-carousel/dist/styles/custom.css',
-//...
-```
-### 2. make config for your carousel
-```jsx
-// ...
-import React from 'react';
-
-//...
-// on main function
-const slideConfig = {
-  threshold: 50,
-  infinite: true,
-  nav: true,
-  dots: true,
-  autoPlay: false,
-  responsive: {
-    0: {
-      items: 1.5
-    },
-    560: {
-      items: 3
-    },
-    760: {
-      items: 2.5
-    }
-  }
-};
-// ....
-```
-### 3. use config on your component's body
-```jsx
-  <div class="container">
-      <SimpleCarousel className="myCarousel" slideConfig={slideConfig}>
-          <span className="slide">Slide 1</span>
-          <span className="slide">Slide 2</span>
-          <span className="slide">Slide 3</span>
-          <span className="slide">Slide 4</span>
-          <span className="slide">Slide 5</span>
-          <span className="slide">Slide 6</span>
-          <span className="slide">Slide 7</span>
-      </SimpleCarousel>
-  </div>
-
+## get started
+```bash 
+npm i @snappmarket/ui-carousel
 ```
 
 
-for EX:
+## usage
+```es6
+import Carousel from 'ui-carousel';
 
-```jsx
-import React from 'react';
-import SimpleCarousel from './components/slider';
-import 'es6-simple-carousel/dist/styles/custom.css';
+const ProductsSlider = props => {
+  const { product, refresh } = props;
+  // refresh true or false
 
-function App() {
+  // start from activeSlide position,
+  // you can create function for change position by click on showingSlide
+  const [activeSlide, setActiveSlide] = useState(0);
+
+  // create config for init Carousel
   const slideConfig = {
-    threshold: 50,
-    infinite: true,
-    nav: true,
-    dots: true,
-    autoPlay: false,
+    infinite: false,    // infinite Carousel true of false 
+    customArrow: true,  // true when use custom icon on arrows
+    nav: true,          // true or false showing nav arrows on Carousel
+    dots: false,        // true or false showing dots bottom of Carousel
+    autoPlay: false,    // true or false auto Carousel auto play
+    nextSpeed: 2000,    // auto play speed
+    rtl: false,         // true or false rtl mode
+    drag: true,         // true or false draggable on Carousel
+    threshold: 50,      // set threshold end and first of Carousel for fire actions (drag and calc position ,....)
     responsive: {
       0: {
-        items: 1.5
+        items: 1.5,
       },
       560: {
-        items: 2.5
+        items: 3,
       },
       760: {
-        items: 3
-      }
-    }
+        items: 5,
+      },
+      1200: {
+        items: 8,
+      },
+    },
   };
 
+  // for EX:
   return (
-    <div className="container">
-      <SimpleCarousel className="myCarousel" slideConfig={slideConfig} >
-          <span className="slide">Slide 1</span>
-          <span className="slide">Slide 2</span>
-          <span className="slide">Slide 3</span>
-          <span className="slide">Slide 4</span>
-          <span className="slide">Slide 5</span>
-          <span className="slide">Slide 6</span>
-          <span className="slide">Slide 7</span>
-      </SimpleCarousel>
-    </div>
-  );
-}
-export default App;
-
-
+      <Carousel
+        slideConfig={slideConfig}
+        showingSlide={activeSlide}
+        refresh={refresh}
+        nextArrow={
+          <Button
+            icon={<AngleRightIcon />}
+            size="xs"
+            modifier="link"
+            color="gray"
+            shade="dark"
+          />
+        }
+        prevArrow={
+          <Button
+            icon={<AngleLeftIcon />}
+            size="xs"
+            modifier="link"
+            color="gray"
+            shade="dark"
+          />
+        }
+      >
+      {products.map(item => (
+        <div>{item}</div>
+      ))}
+    </Carousel>
+  )
 ```
+
+you can create custom arrrow icon on Carousel:
+
+first: add true to customArrow on slideConfig
+```es6
+  const slideConfig = {
+    ...
+    customArrow: true,
+    ...
+  };
+```
+next:
+add custom icon DOM or Component for nextArrow,prevArrow on Carousel attribute
+```es6
+  <Carousel
+    ....
+    nextArrow={
+      <Button
+        icon={<AngleRightIcon />}
+        size="xs"
+        modifier="link"
+        color="gray"
+        shade="dark"
+      />
+    }
+    prevArrow={
+      <Button
+        icon={<AngleLeftIcon />}
+        size="xs"
+        modifier="link"
+        color="gray"
+        shade="dark"
+      />
+    }
+    ....
+  >
+  {products.map(item => (
+    <div>{item}</div>
+  ))}
+  </Carousel>
+```
+
+---
+#### The MIT License (MIT)
+
+Copyright (c) 2020 @snappmarket
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:

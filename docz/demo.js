@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
-import { Slider } from './core/index';
-import { StyledSimpleCarousel } from './core/styles';
+import { Slider } from '../src/core/index';
+import { StyledSimpleCarousel } from '../src/core/styles';
+import { StyledCarouselDemo } from '../src/core/styles.demo';
 
-const SimpleCarousel = props => {
+const SimpleCarouselDemo = props => {
   const {
     className,
     children,
@@ -13,7 +14,6 @@ const SimpleCarousel = props => {
     refresh,
     nextArrow,
     prevArrow,
-    flexScroll,
   } = props;
   const sliderRed = useRef(null);
   const { customArrow } = slideConfig;
@@ -57,14 +57,12 @@ const SimpleCarousel = props => {
   };
 
   return (
-    <>
+    <StyledCarouselDemo>
       {children && children.length && (
         <StyledSimpleCarousel>
           <div
             data-testid="carousel"
-            className={`slider ${className} ${
-              flexScroll ? 'flex-scroll-on' : 'flex-scroll-off'
-            }`}
+            className={`slider ${className}`}
             ref={sliderRed}
           >
             <div className="wrapper">
@@ -83,10 +81,10 @@ const SimpleCarousel = props => {
           </div>
         </StyledSimpleCarousel>
       )}
-    </>
+    </StyledCarouselDemo>
   );
 };
-SimpleCarousel.propTypes = {
+SimpleCarouselDemo.propTypes = {
   className: PropTypes.string,
   children: PropTypes.node.isRequired,
   slideConfig: PropTypes.object.isRequired,
@@ -94,10 +92,8 @@ SimpleCarousel.propTypes = {
   refresh: PropTypes.bool,
   nextArrow: PropTypes.node,
   prevArrow: PropTypes.node,
-  flexScroll: PropTypes.node,
 };
-SimpleCarousel.defaultProps = {
+SimpleCarouselDemo.defaultProps = {
   className: '',
-  flexScroll: false,
 };
-export default SimpleCarousel;
+export default SimpleCarouselDemo;
